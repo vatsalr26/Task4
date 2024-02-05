@@ -40,7 +40,6 @@ public class App {
                         break;
 
                     case 6:
-                        calculateMedian(scanner, university, calculator);
                         break;
 
                     case 7:
@@ -128,25 +127,6 @@ public class App {
         System.out.println("Average is " + average);
     }
 
-    private static void calculateMedian(Scanner scanner, University university, Calculator calculator) {
-        listStudents(university);
-        System.out.println("Which student do you want to calculate the median for?");
-        try {
-            int studentIndexForMedian = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline
-            Student studentForMedian = university.getStudents().get(studentIndexForMedian);
-    
-            double median = calculator.getMedianGrade(studentForMedian);
-            System.out.println("Median is " + median);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Wrong input value. Please enter a valid student index.");
-            scanner.nextLine(); // Consume the newline
-        } catch (NoSuchElementException e) {
-            System.out.println("Wrong input value. Please enter a valid integer.");
-            scanner.nextLine(); // Consume the newline
-        }
-    }
-    
 }
 
 
