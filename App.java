@@ -13,7 +13,6 @@ public class App {
                     "6) Calculate median of course completions, 7) Save students to file, " +
                     "8) Load students from file, 0) End the program");
 
-            try {
                 int choice = scanner.nextInt();
                 scanner.nextLine(); 
 
@@ -57,11 +56,9 @@ public class App {
 
                     default:
                         System.out.println("Wrong input value");
-                }
-            } catch (Exception e) {
-                System.out.println("Wrong input value");
-                scanner.nextLine(); 
-            }
+                } 
+            
+                
         }
     }
 
