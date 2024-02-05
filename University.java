@@ -27,6 +27,7 @@ public class University {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public void loadFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("students.ser"))) {
             students = (List<Student>) ois.readObject();

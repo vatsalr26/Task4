@@ -1,4 +1,5 @@
 // App.java
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class App {
@@ -15,7 +16,7 @@ public class App {
 
             try {
                 int choice = scanner.nextInt();
-                scanner.nextLine();
+                scanner.nextLine(); // Consume the newline
 
                 switch (choice) {
                     case 1:
@@ -39,7 +40,7 @@ public class App {
                         break;
 
                     case 6:
-                        // Implement calculateMedian if needed
+                        calculateMedian(scanner, university, calculator);
                         break;
 
                     case 7:
@@ -58,9 +59,9 @@ public class App {
                     default:
                         System.out.println("Wrong input value");
                 }
-            } catch (Exception e) {
+            } catch (NoSuchElementException e) {
                 System.out.println("Wrong input value. Please enter a valid integer.");
-                scanner.nextLine();
+                scanner.nextLine(); // Consume the newline
             }
         }
     }
@@ -126,4 +127,16 @@ public class App {
         double average = calculator.getAverageGrade(studentForAverage);
         System.out.println("Average is " + average);
     }
+
+    private static void calculateMedian(Scanner scanner, University university, Calculator calculator) {
+    listStudents(university);
+    System.out.println("Which student do you want to calculate the median for?");
+    int studentIndexForMedian = scanner.nextInt();
+    scanner.nextLine(); // Consume the newline
+    Student studentForMedian = university.getStudents().get(studentIndexForMedian);
+
+    double median = calculator.getMedianGrade(studentForMedian);
+    System.out.println("Median is " + median);
+}
+
 }
