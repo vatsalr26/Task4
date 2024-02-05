@@ -15,49 +15,48 @@ public class App {
 
             int choice = scanner.nextInt();
 
-                switch (choice) {
-                    case 1:
-                        addStudent(scanner, university);
-                        break;
+            switch (choice) {
+                case 1:
+                    addStudent(scanner, university);
+                    break;
 
-                    case 2:
-                        listStudents(university);
-                        break;
+                case 2:
+                    listStudents(university);
+                    break;
 
-                    case 3:
-                        addCourseCompletion(scanner, university);
-                        break;
+                case 3:
+                    addCourseCompletion(scanner, university);
+                    break;
 
-                    case 4:
-                        listCourseCompletions(scanner, university);
-                        break;
+                case 4:
+                    listCourseCompletions(scanner, university);
+                    break;
 
-                    case 5:
-                        calculateAverage(scanner, university, calculator);
-                        break;
+                case 5:
+                    calculateAverage(scanner, university, calculator);
+                    break;
 
-                    case 6:
-                        break;
+                case 6:
+                    break;
 
-                    case 7:
-                        university.saveToFile();
-                        break;
+                case 7:
+                    university.saveToFile();
+                    break;
 
-                    case 8:
-                        university.loadFromFile();
-                        break;
+                case 8:
+                    university.loadFromFile();
+                    break;
 
-                    case 0:
-                        System.out.println("Thank you for using the program.");
-                        System.exit(0);
-                        break;
-                }
-             
+                case 0:
+                    System.out.println("Thank you for using the program.");
+                    System.exit(0);
+                    break;
+                }  
         }
 }
 
 
-    private static void addStudent(Scanner scanner, University university) {
+    public static void addStudent(Scanner scanner, University university) {
         System.out.println("What is the name of the student?");
         String name = scanner.nextLine();
         System.out.println("What is the student number of the student?");
@@ -85,6 +84,7 @@ public class App {
         System.out.println("What is the grade of the course?");
         int grade = scanner.nextInt();
         selectedStudent.addGrade(courseName, grade);
+        
     }
 
     private static void listStudentsForAddCourse(University university) {
