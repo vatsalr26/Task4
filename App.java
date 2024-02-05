@@ -52,9 +52,6 @@ public class App {
                     System.out.println("Thank you for using the program.");
                     System.exit(0);
                     break;
-
-                default:
-                    System.out.println("Invalid choice. Please enter a valid option.");
             }
         }
     }
