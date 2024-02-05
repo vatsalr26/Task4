@@ -14,7 +14,6 @@ public class App {
                     "6) Calculate median of course completions, 7) Save students to file, " +
                     "8) Load students from file, 0) End the program");
 
-            try {
                 int choice = scanner.nextInt();
                 scanner.nextLine(); // Consume the newline
 
@@ -58,12 +57,10 @@ public class App {
                     default:
                         System.out.println("Wrong input value");
                 }
-            } catch (NoSuchElementException e) {
-                System.out.println("Wrong input value. Please enter a valid integer.");
-                scanner.nextLine(); // Consume the newline
-            }
+             
         }
-    }
+}
+
 
     private static void addStudent(Scanner scanner, University university) {
         System.out.println("What is the name of the student?");
