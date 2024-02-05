@@ -69,7 +69,6 @@ public class App {
         String studentNumber = scanner.nextLine();
         Student student = new Student(name, studentNumber);
         university.addStudent(student);
-        System.out.println("Student added successfully.");
     }
 
     private static void listStudents(University university) {
