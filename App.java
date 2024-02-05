@@ -1,3 +1,4 @@
+// App.java
 import java.util.Scanner;
 
 public class App {
@@ -13,57 +14,53 @@ public class App {
                     "8) Load students from file, 0) End the program");
 
             try {
-                if (scanner.hasNextInt()) {
-                    int choice = scanner.nextInt();
-                    scanner.nextLine(); // Consume the newline
+                int choice = scanner.nextInt();
+                scanner.nextLine();
 
-                    switch (choice) {
-                        case 1:
-                            addStudent(scanner, university);
-                            break;
+                switch (choice) {
+                    case 1:
+                        addStudent(scanner, university);
+                        break;
 
-                        case 2:
-                            listStudents(university);
-                            break;
+                    case 2:
+                        listStudents(university);
+                        break;
 
-                        case 3:
-                            addCourseCompletion(scanner, university);
-                            break;
+                    case 3:
+                        addCourseCompletion(scanner, university);
+                        break;
 
-                        case 4:
-                            listCourseCompletions(scanner, university);
-                            break;
+                    case 4:
+                        listCourseCompletions(scanner, university);
+                        break;
 
-                        case 5:
-                            calculateAverage(scanner, university, calculator);
-                            break;
+                    case 5:
+                        calculateAverage(scanner, university, calculator);
+                        break;
 
-                        case 6:
-                            calculateMedian(scanner, university, calculator);
-                            break;
+                    case 6:
+                        // Implement calculateMedian if needed
+                        break;
 
-                        case 7:
-                            university.saveToFile();
-                            break;
+                    case 7:
+                        university.saveToFile();
+                        break;
 
-                        case 8:
-                            university.loadFromFile();
-                            break;
+                    case 8:
+                        university.loadFromFile();
+                        break;
 
-                        case 0:
-                            System.out.println("Thank you for using the program.");
-                            System.exit(0);
-                            break;
+                    case 0:
+                        System.out.println("Thank you for using the program.");
+                        System.exit(0);
+                        break;
 
-                        default:
-                            System.out.println("Wrong input value");
-                    }
-                } else {
-                    System.out.println("Wrong input value. Please enter a valid integer.");
-                    scanner.nextLine(); // Consume the invalid input
+                    default:
+                        System.out.println("Wrong input value");
                 }
             } catch (Exception e) {
-                e.printStackTrace(); // Print the exception stack trace for debugging
+                System.out.println("Wrong input value. Please enter a valid integer.");
+                scanner.nextLine();
             }
         }
     }
@@ -75,6 +72,7 @@ public class App {
         String studentNumber = scanner.nextLine();
         Student student = new Student(name, studentNumber);
         university.addStudent(student);
+        System.out.println("Student added successfully.");
     }
 
     private static void listStudents(University university) {
@@ -83,36 +81,33 @@ public class App {
             System.out.println(student.getStudentNumber() + ": " + student.getName());
         }
     }
-    
-    
 
     private static void addCourseCompletion(Scanner scanner, University university) {
         listStudentsForAddCourse(university);
         System.out.println("Which student do you want to add course completion for?");
         int studentIndex = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline
+        scanner.nextLine();
         Student selectedStudent = university.getStudents().get(studentIndex);
-    
+
         System.out.println("What is the name of the course?");
         String courseName = scanner.nextLine();
         System.out.println("What is the grade of the course?");
         int grade = scanner.nextInt();
         selectedStudent.addGrade(courseName, grade);
+        System.out.println("Course completion added successfully.");
     }
-    
+
     private static void listStudentsForAddCourse(University university) {
         for (int i = 0; i < university.getStudents().size(); i++) {
             System.out.println(i + ": " + university.getStudents().get(i).getName());
         }
     }
-    
-    
 
     private static void listCourseCompletions(Scanner scanner, University university) {
         listStudents(university);
         System.out.println("Which student do you want to list course completions for?");
         int studentIndexForList = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline
+        scanner.nextLine();
         Student studentForList = university.getStudents().get(studentIndexForList);
 
         System.out.println("Course Completions:");
@@ -125,21 +120,10 @@ public class App {
         listStudents(university);
         System.out.println("Which student do you want to calculate the average for?");
         int studentIndexForAverage = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline
+        scanner.nextLine();
         Student studentForAverage = university.getStudents().get(studentIndexForAverage);
 
         double average = calculator.getAverageGrade(studentForAverage);
         System.out.println("Average is " + average);
-    }
-
-    private static void calculateMedian(Scanner scanner, University university, Calculator calculator) {
-        listStudents(university);
-        System.out.println("Which student do you want to calculate the median for?");
-        int studentIndexForMedian = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline
-        Student studentForMedian = university.getStudents().get(studentIndexForMedian);
-
-        double median = calculator.getMedianGrade(studentForMedian);
-        System.out.println("Median is " + median);
     }
 }

@@ -1,13 +1,14 @@
 // Calculator.java
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Calculator {
     public double getAverageGrade(Student student) {
         List<Grade> grades = student.getGrades();
-        if (grades.isEmpty()) return 0;
+
+        if (grades.isEmpty()) {
+            return 0.0;
+        }
 
         int sum = 0;
         for (Grade grade : grades) {
@@ -19,20 +20,21 @@ public class Calculator {
 
     public double getMedianGrade(Student student) {
         List<Grade> grades = student.getGrades();
-        if (grades.isEmpty()) return 0;
 
-        List<Grade> sortedGrades = new ArrayList<>(grades);
-        Collections.sort(sortedGrades, Comparator.comparingInt(g -> g.getGrade()));
+        if (grades.isEmpty()) {
+            return 0.0;
+        }
 
-        int size = sortedGrades.size();
-        int middle = size / 2;
+        Collections.sort(grades);
+        int size = grades.size();
 
         if (size % 2 == 0) {
-            int median1 = sortedGrades.get(middle - 1).getGrade();
-            int median2 = sortedGrades.get(middle).getGrade();
-            return (double) (median1 + median2) / 2;
+            int mid1 = size / 2 - 1;
+            int mid2 = size / 2;
+            return (double) (grades.get(mid1).getGrade() + grades.get(mid2).getGrade()) / 2;
         } else {
-            return sortedGrades.get(middle).getGrade();
+            int mid = size / 2;
+            return grades.get(mid).getGrade();
         }
     }
 }

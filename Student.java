@@ -18,33 +18,16 @@ public class Student implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getStudentNumber() {
         return studentNumber;
-    }
-
-    public void setStudentNumber(String studentNumber) {
-        this.studentNumber = studentNumber;
-    }
-
-    public void addGrade(String course, int grade) {
-        Grade newGrade = new Grade(course, grade);
-        grades.add(newGrade);
     }
 
     public List<Grade> getGrades() {
         return grades;
     }
 
-    public void setGrades(List<Grade> grades) {
-        this.grades = grades;
-    }
-
-    @Override
-    public String toString() {
-        return studentNumber + ": " + name;
+    public void addGrade(String course, int grade) {
+        Grade newGrade = new Grade(course, grade);
+        grades.add(newGrade);
     }
 }

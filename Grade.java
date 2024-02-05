@@ -1,7 +1,7 @@
 // Grade.java
 import java.io.Serializable;
 
-public class Grade implements Serializable {
+public class Grade implements Comparable<Grade>, Serializable {
     private String course;
     private int grade;
 
@@ -14,16 +14,13 @@ public class Grade implements Serializable {
         return course;
     }
 
-    public void setCourse(String course) {
-        this.course = course;
-    }
-
     public int getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
-        this.grade = grade;
+    @Override
+    public int compareTo(Grade other) {
+        return Integer.compare(this.grade, other.grade);
     }
 
     @Override
