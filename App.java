@@ -14,7 +14,6 @@ public class App {
                     "8) Load students from file, 0) End the program");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
 
             switch (choice) {
                 case 1:
