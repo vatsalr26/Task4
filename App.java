@@ -1,5 +1,4 @@
 // App.java
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class App {
@@ -52,9 +51,6 @@ public class App {
                         System.out.println("Thank you for using the program.");
                         System.exit(0);
                         break;
-
-                    default:
-                        System.out.println("Wrong input value");
                 }
              
         }
