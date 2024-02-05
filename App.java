@@ -1,4 +1,3 @@
-// App.java
 import java.util.Scanner;
 
 public class App {
@@ -13,55 +12,61 @@ public class App {
                     "6) Calculate median of course completions, 7) Save students to file, " +
                     "8) Load students from file, 0) End the program");
 
-                int choice = scanner.nextInt();
-                scanner.nextLine(); 
+            try {
+                if (scanner.hasNextInt()) {
+                    int choice = scanner.nextInt();
+                    scanner.nextLine(); // Consume the newline
 
-                switch (choice) {
-                    case 1:
-                        addStudent(scanner, university);
-                        break;
+                    switch (choice) {
+                        case 1:
+                            addStudent(scanner, university);
+                            break;
 
-                    case 2:
-                        listStudents(university);
-                        break;
+                        case 2:
+                            listStudents(university);
+                            break;
 
-                    case 3:
-                        addCourseCompletion(scanner, university);
-                        break;
+                        case 3:
+                            addCourseCompletion(scanner, university);
+                            break;
 
-                    case 4:
-                        listCourseCompletions(scanner, university);
-                        break;
+                        case 4:
+                            listCourseCompletions(scanner, university);
+                            break;
 
-                    case 5:
-                        calculateAverage(scanner, university, calculator);
-                        break;
+                        case 5:
+                            calculateAverage(scanner, university, calculator);
+                            break;
 
-                    case 6:
-                        calculateMedian(scanner, university, calculator);
-                        break;
+                        case 6:
+                            calculateMedian(scanner, university, calculator);
+                            break;
 
-                    case 7:
-                        university.saveToFile();
-                        break;
+                        case 7:
+                            university.saveToFile();
+                            break;
 
-                    case 8:
-                        university.loadFromFile();
-                        break;
+                        case 8:
+                            university.loadFromFile();
+                            break;
 
-                    case 0:
-                        System.out.println("Thank you for using the program.");
-                        System.exit(0);
-                        break;
+                        case 0:
+                            System.out.println("Thank you for using the program.");
+                            System.exit(0);
+                            break;
 
-                    default:
-                        System.out.println("Wrong input value");
-                } 
-            
-                
+                        default:
+                            System.out.println("Wrong input value");
+                    }
+                } else {
+                    System.out.println("Wrong input value. Please enter a valid integer.");
+                    scanner.nextLine(); // Consume the invalid input
+                }
+            } catch (Exception e) {
+                e.printStackTrace(); // Print the exception stack trace for debugging
+            }
         }
     }
-
 
     private static void addStudent(Scanner scanner, University university) {
         System.out.println("What is the name of the student?");
