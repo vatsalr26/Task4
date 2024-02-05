@@ -23,7 +23,7 @@ public class App {
                         break;
 
                     case 2:
-                        listStudentsForAddCourse(university);
+                        listStudents(university);
                         break;
 
                     case 3:
@@ -67,26 +67,20 @@ public class App {
 
 
     private static void addStudent(Scanner scanner, University university) {
-        try {
-            System.out.println("What is the name of the student?");
-            String name = scanner.nextLine();
-    
-            System.out.println("What is the student number of the student?");
-            String studentNumberStr = scanner.nextLine();
-    
-            // Validate student ID
-            if (studentNumberStr.length() != 7 || !studentNumberStr.matches("\\d+")) {
-                System.out.println("Wrong input value");
-                return;
-            }
-    
-            int studentNumber = Integer.parseInt(studentNumberStr);
-            Student student = new Student(name, studentNumberStr); // Use studentNumberStr to preserve leading zeros
-            university.addStudent(student);
-        } catch (NumberFormatException e) {
-            System.out.println("Wrong input value");}
+        System.out.println("What is the name of the student?");
+        String name = scanner.nextLine();
+        System.out.println("What is the student number of the student?");
+        String studentNumber = scanner.nextLine();
+        Student student = new Student(name, studentNumber);
+        university.addStudent(student);
     }
-    
+
+    private static void listStudents(University university) {
+        System.out.println("Students:");
+        for (Student student : university.getStudents()) {
+            System.out.println(student.getStudentNumber() + ": " + student.getName());
+        }
+    }
     
     
 
@@ -113,7 +107,7 @@ public class App {
     
 
     private static void listCourseCompletions(Scanner scanner, University university) {
-        listStudentsForAddCourse(university);
+        listStudents(university);
         System.out.println("Which student do you want to list course completions for?");
         int studentIndexForList = scanner.nextInt();
         scanner.nextLine(); // Consume the newline
@@ -126,7 +120,7 @@ public class App {
     }
 
     private static void calculateAverage(Scanner scanner, University university, Calculator calculator) {
-        listStudentsForAddCourse(university);
+        listStudents(university);
         System.out.println("Which student do you want to calculate the average for?");
         int studentIndexForAverage = scanner.nextInt();
         scanner.nextLine(); // Consume the newline
@@ -137,7 +131,7 @@ public class App {
     }
 
     private static void calculateMedian(Scanner scanner, University university, Calculator calculator) {
-        listStudentsForAddCourse(university);
+        listStudents(university);
         System.out.println("Which student do you want to calculate the median for?");
         int studentIndexForMedian = scanner.nextInt();
         scanner.nextLine(); // Consume the newline
