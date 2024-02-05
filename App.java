@@ -13,49 +13,52 @@ public class App {
                     "6) Calculate median of course completions, 7) Save students to file, " +
                     "8) Load students from file, 0) End the program");
 
-                int choice = scanner.nextInt();
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
 
-                switch (choice) {
-                    case 1:
-                        addStudent(scanner, university);
-                        break;
+            switch (choice) {
+                case 1:
+                    addStudent(scanner, university);
+                    break;
 
-                    case 2:
-                        listStudents(university);
-                        break;
+                case 2:
+                    listStudents(university);
+                    break;
 
-                    case 3:
-                        addCourseCompletion(scanner, university);
-                        break;
+                case 3:
+                    addCourseCompletion(scanner, university);
+                    break;
 
-                    case 4:
-                        listCourseCompletions(scanner, university);
-                        break;
+                case 4:
+                    listCourseCompletions(scanner, university);
+                    break;
 
-                    case 5:
-                        calculateAverage(scanner, university, calculator);
-                        break;
+                case 5:
+                    calculateAverage(scanner, university, calculator);
+                    break;
 
-                    case 6:
-                        break;
+                case 6:
+                    // Implement the median calculation here
+                    break;
 
-                    case 7:
-                        university.saveToFile();
-                        break;
+                case 7:
+                    university.saveToFile();
+                    break;
 
-                    case 8:
-                        university.loadFromFile();
-                        break;
+                case 8:
+                    university.loadFromFile();
+                    break;
 
-                    case 0:
-                        System.out.println("Thank you for using the program.");
-                        System.exit(0);
-                        break;
-                }
-             
+                case 0:
+                    System.out.println("Thank you for using the program.");
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+            }
         }
-}
-
+    }
 
     private static void addStudent(Scanner scanner, University university) {
         System.out.println("What is the name of the student?");
@@ -116,7 +119,4 @@ public class App {
         double average = calculator.getAverageGrade(studentForAverage);
         System.out.println("Average is " + average);
     }
-
 }
-
-
