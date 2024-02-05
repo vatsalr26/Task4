@@ -85,7 +85,6 @@ public class App {
         System.out.println("What is the grade of the course?");
         int grade = scanner.nextInt();
         selectedStudent.addGrade(courseName, grade);
-        System.out.println("Course completion added successfully.");
     }
 
     private static void listStudentsForAddCourse(University university) {
